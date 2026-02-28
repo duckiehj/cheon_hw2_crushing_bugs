@@ -1,12 +1,12 @@
-# cheon_hw2_crushing_bugs
-This repo is for MMED -1055 - Mon - HW2 Crushing bugs 
 
-# HW1 - Interactive SVG Icons
+# HW2 - Crushing Bugs
 
-This repo contains the submission for MMED-1055 HW#1 by Jin Cheon.  
-This project includes a branded set of six scalable SVG icons created in Adobe Illustrator. The icons can be used on the FIP and Brand Revival website and feature simple hover and click interactions using CSS and JavaScript. All files are managed using Git and GitHub as part of the assignment requirements.
+This repo contains the submission for MMED-1055 HW#2 – Crushing Bugs by Jin Cheon.
+This project involves fixing bugs in a JavaScript drag-and-drop game provided in class. The fixes ensure that only one label can be placed in each drop zone and that all labels reset properly back to their starting position when the board is reset.
 
-Feel free to explore the design as part of the assignment.
+The project also includes small user experience improvements, such as highlighting drop zones during drag interactions. All bug fixes and updates are managed using Git and GitHub, with separate branches for each solution as required for the assignment.
+
+Feel free to explore the project. 
 
 
 ## Installation 💻

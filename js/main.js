@@ -1,7 +1,8 @@
 console.log("JavaScript File is linked");
 
 // Variables
-const lables = document.querySelectorAll(".label");
+
+const labels = document.querySelectorAll(".label");
 const targetZones = document.querySelectorAll(".target-zone");
 let currentDraggedElement = null;
 // add variable for reset button; homework!!!!!!!!!!
@@ -12,6 +13,7 @@ let currentDraggedElement = null;
 
 
 // Functions
+
 function dragStart() {
     console.log("Started Dragging");
     // whatever the user is dragging, store it in currentDraggedElement
@@ -31,7 +33,14 @@ function dropped(e) {
     // if this dropzone has a child, don't let it drop
     // use a return statement
 
-    if(this.children.length>=1) {
+
+
+    // if(this.children.length>=1) {
+    //     return;
+    // }
+   
+    // Bug #1 fix - if the dropzone already has a label, don't let it drop another one in there
+if(this.children.length>0) {
         return;
     }
 
@@ -54,7 +63,8 @@ function dropped(e) {
 
 
 // Event Listeners
-lables.forEach(label => {
+
+labels.forEach(label => {
     label.addEventListener("dragstart", dragStart);
 });
 

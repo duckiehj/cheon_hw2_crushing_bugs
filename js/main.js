@@ -15,6 +15,8 @@ const labelBox = document.querySelector("#label-box");
 
 
 
+
+
 // Functions
 
 function dragStart() {
@@ -51,6 +53,9 @@ if(this.children.length>0) {
     this.appendChild(currentDraggedElement);
     // here need to add something for homework - use if & this
 
+    // Bonus - remove highlight after drop
+    this.classList.remove("highlight");
+
     // reset the reference
     currentDraggedElement = null;
 }
@@ -74,6 +79,19 @@ function moveLabelBack(zone) {
     }
 }
 
+function dragEnter() {
+    this.classList.add("highlight");
+}
+
+function dragLeave() {
+    this.classList.remove("highlight");
+}
+
+
+
+
+
+
 // Event Listeners
 
 labels.forEach(label => {
@@ -90,3 +108,12 @@ targetZones.forEach(zone => {
 
 // Bug #2 fix - reset button event listener
 resetButton.addEventListener("click", resetPuzzle);
+
+
+// Bonus fix - highlight dropzone when dragging over it
+targetZones.forEach(zone => {
+    zone.addEventListener("dragover", dragOver);
+    zone.addEventListener("drop", dropped);
+    zone.addEventListener("dragenter", dragEnter);
+    zone.addEventListener("dragleave", dragLeave);
+});

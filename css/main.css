@@ -46,6 +46,10 @@ h1, p {
     height: 70px;
 }
 
+.target-zone.highlight {
+    background-color: rgba(80, 206, 22, 0.6);
+}
+
 #heart {
     top: 40%;
     left: 50%;
@@ -126,3 +130,4 @@ h1, p {
         flex-direction: row;
     }
 }
+

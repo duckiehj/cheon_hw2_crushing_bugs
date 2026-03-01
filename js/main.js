@@ -8,6 +8,9 @@ let currentDraggedElement = null;
 // add variable for reset button; homework!!!!!!!!!!
 // add variable for label box
 
+// Bug #2 fix - reset button variable
+const resetButton = document.querySelector("#reset-btn");
+const labelBox = document.querySelector("#label-box");
 
 
 
@@ -59,8 +62,17 @@ if(this.children.length>0) {
     // labelBox.appendChild(); put pack piece
 // }
 
-
-
+// Bug #2 fix - reset function
+function resetPuzzle() {
+    // loop through all target zones
+    targetZones.forEach(moveLabelBack);
+}
+    // if the zone has a child (i.e., a label), move it back to the labelBox
+function moveLabelBack(zone) {
+    if (zone.children.length > 0) {
+        labelBox.appendChild(zone.firstElementChild);
+    }
+}
 
 // Event Listeners
 
@@ -75,3 +87,6 @@ targetZones.forEach(zone => {
 
 // add event listner for the reset button HOMEWORK!!!!!!!!!!!!
 // listen for the click event, call a reset function
+
+// Bug #2 fix - reset button event listener
+resetButton.addEventListener("click", resetPuzzle);

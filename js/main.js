@@ -12,7 +12,10 @@ let currentDraggedElement = null;
 const resetButton = document.querySelector("#reset-btn");
 const labelBox = document.querySelector("#label-box");
 
-
+console.log("labels:", labels);
+console.log("targetZones:", targetZones);
+console.log("resetButton:", resetButton);
+console.log("labelBox:", labelBox);
 
 
 
@@ -38,24 +41,18 @@ function dropped(e) {
     // if this dropzone has a child, don't let it drop
     // use a return statement
 
-
-
-    // if(this.children.length>=1) {
-    //     return;
-    // }
    
     // Bug #1 fix - if the dropzone already has a label, don't let it drop another one in there
-if(this.children.length>0) {
+    if(this.children.length>0) {
+        // Bonus - remove highlight after drop
+        this.classList.remove("highlight");
         return;
     }
 
     // drop the piece 
     this.appendChild(currentDraggedElement);
     // here need to add something for homework - use if & this
-
-    // Bonus - remove highlight after drop
     this.classList.remove("highlight");
-
     // reset the reference
     currentDraggedElement = null;
 }
@@ -71,6 +68,7 @@ if(this.children.length>0) {
 function resetPuzzle() {
     // loop through all target zones
     targetZones.forEach(moveLabelBack);
+    currentDraggedElement = null;
 }
     // if the zone has a child (i.e., a label), move it back to the labelBox
 function moveLabelBack(zone) {
@@ -79,6 +77,7 @@ function moveLabelBack(zone) {
     }
 }
 
+// Bonus fix - highlight dropzone when dragging over it
 function dragEnter() {
     this.classList.add("highlight");
 }
@@ -86,6 +85,8 @@ function dragEnter() {
 function dragLeave() {
     this.classList.remove("highlight");
 }
+
+
 
 
 
@@ -101,8 +102,9 @@ labels.forEach(label => {
 targetZones.forEach(zone => {
     zone.addEventListener("dragover", dragOver);
     zone.addEventListener("drop", dropped);
-})
-
+    zone.addEventListener("dragenter", dragEnter);
+    zone.addEventListener("dragleave", dragLeave);
+});
 // add event listner for the reset button HOMEWORK!!!!!!!!!!!!
 // listen for the click event, call a reset function
 
@@ -110,10 +112,3 @@ targetZones.forEach(zone => {
 resetButton.addEventListener("click", resetPuzzle);
 
 
-// Bonus fix - highlight dropzone when dragging over it
-targetZones.forEach(zone => {
-    zone.addEventListener("dragover", dragOver);
-    zone.addEventListener("drop", dropped);
-    zone.addEventListener("dragenter", dragEnter);
-    zone.addEventListener("dragleave", dragLeave);
-});
